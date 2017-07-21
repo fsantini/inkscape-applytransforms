@@ -180,41 +180,6 @@ class ApplyTransform(inkex.Effect):
         
 
 
-        #elif node.tag == inkex.addNS('rect', 'svg'):
-            #node.set('transform', formatTransform(transf))
-            
-        #elif node.tag == inkex.addNS('circle', 'svg'):
-            #cx = node.get('cx')
-            #cy = node.get('cy')
-            #unit = self.getUnit(cx)
-            #pt = [self.getVal(cx), self.getVal(cy)]
-            #applyTransformToPoint(transf, pt)
-            #node.set('cx', self.valWithUnit(pt[0],unit))
-            #node.set('cy', self.valWithUnit(pt[1],unit))
-            #if 'r' in node.attrib:
-                #unit = self.getUnit(node.get('r'))
-                #r = self.getVal(node.get('r'))
-                ## this is a circle: is the scale uniform?
-                #if transf[0][0] == transf[1][1]:
-                    #r *= abs(transf[0][0])
-                    #node.set('r', self.valWithUnit(r, unit))
-                #else:
-                    ## transform is not uniform: go from circle to ellipse
-                    #rx = r*abs(transf[0][0])
-                    #ry = r*abs(transf[1][1])
-                    #del node.attrib['r']
-                    #node.set('rx', self.valWithUnit(rx, unit))
-                    #node.set('ry', self.valWithUnit(ry, unit))
-                    #node.tag = inkex.addNS('path', 'svg')
-            #else:
-                ## this is an ellipse
-                #unit = self.getUnit(node.get('rx'))
-                #rx = self.getVal(node.get('rx'))*abs(transf[0][0])
-                #ry = self.getVal(node.get('ry'))*abs(transf[1][1])
-                #node.set('rx', self.valWithUnit(rx, unit))
-                #node.set('ry', self.valWithUnit(ry, unit))
-            
-
         for child in node.getchildren():
             self.recursiveFuseTransform(child, transf)
 
